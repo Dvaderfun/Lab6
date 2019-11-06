@@ -4,10 +4,11 @@ import java.lang.reflect.Array;
 import java.time.Year;
 
 public class Main {
-    Student student = new Student("2","3");
-    Group group = new Group(1);
+    public static void main() {
+        Student student = new Student("2","3");
+        Group group = new Group(1);
+        group.getSortedStudents();
 
-    public Student getStudent() {
-        return student;
-    };
+        System.out.println(i);
+    }
 }
