@@ -14,28 +14,16 @@ open class Student @JvmOverloads constructor(var firstName: String, var lastName
     override var projectNames: String? = null
 
     fun addEvent(event: Event){
-        eventsArray.add(event);
+        eventsArray.add(event)
         events++
     }
 
     fun getEventByDate(date: Date): Event? {
-        for (event: Event in eventsArray){
-            if (event.date == date){
-                return event
-            }
-        }
-        return null
+        return eventsArray.single { event -> event.date == date }
     }
 
-    fun deleteEventByDate(date: Date): Boolean {
-        for (event: Event in eventsArray){
-            if (event.date == date){
-                eventsArray.remove(event)
-                events--
-                return true
-            }
-        }
-        return false
+    fun deleteEventByDate(date: Date) {
+        eventsArray.remove(getEventByDate(date))
     }
 }
 

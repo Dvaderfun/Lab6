@@ -27,19 +27,18 @@ data class Group(var id: Int) {
     }
 
     fun getActivists(): List<Student> {
-        return students.filter {student -> student.events > 0}
+        return students.filter { student -> student.events > 0 }
     }
 
     fun getStudentsWinners(): List<Student> {
-        return students.filter {student -> (student.prizePlace == 1 or 2 or 3) or (student.projectNames?.isNotEmpty() != true)}
+        return students.filter { student -> (student.prizePlace == 1 or 2 or 3) or (student.projectNames?.isNotEmpty() != true) }
     }
 
-
     fun getBudgetStudentsNumber(): Int {
-        return students.filter {student -> student !is ContractStudent}.size
+        return students.filter { student -> student !is ContractStudent }.size
     }
 
     fun getContractStudentsNumber(): Int {
-        return students.filter {student -> student is ContractStudent}.size
+        return students.filter { student -> student is ContractStudent }.size
     }
 }
