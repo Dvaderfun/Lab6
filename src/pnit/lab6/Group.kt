@@ -41,4 +41,8 @@ data class Group(var id: Int) {
     fun getContractStudentsNumber(): Int {
         return students.filter { student -> student is ContractStudent }.size
     }
+
+    override fun toString(): String {
+        return "Group #$id\nStudents number: $studentsNumber\nStudents: $students\nBudget students: ${getBudgetStudentsNumber()}\nContract students: ${getContractStudentsNumber()}"
+    }
 }
