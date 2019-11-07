@@ -12,13 +12,15 @@ public class Main {
         Student student4 = new Student("Hitler","Boris");
         Student student5 = new Student("Boris","Lindon");
 
-        Olympics olympics = new Olympics(null, "", "");
+        Olympics olympics = new Olympics(new Date(), "", "");
 
         Payment payment = new Payment(1300, new Date());
         Payment payment2 = new Payment(1300, new Date());
         Payment payment3 = new Payment(1300, new Date());
 
         ContractStudent student6 = new ContractStudent("2", "2");
+        ContractStudent student7 = new ContractStudent("2", "2");
+
         student6.addPayment(payment);
         student6.addPayment(payment2);
         student6.addPayment(payment3);
@@ -28,12 +30,9 @@ public class Main {
         group.addStudent(student);
         group.addStudent(student2);
         group.addStudent(student3);
+        group.addStudent(student7);
         group.addStudent(student4);
         group.addStudent(student5);
-        for (int i = 0; i < group.getStudents().size(); i++) {
-            System.out.println(group.getSortedStudents().get(i).getFirstName() + " " + group.getSortedStudents().get(i).getLastName());
-        }
-
-
+        group.addStudent(student6);
     }
 }

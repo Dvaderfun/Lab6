@@ -25,46 +25,21 @@ data class Group(var id: Int) {
     fun getSortedStudents(): List<Student> {
         return students.sortedWith(compareBy<Student> { it.lastName }.thenBy { it.firstName }.thenBy { it.id })
     }
-    //TODO сделать через переменную и get() или через функцию?
 
-    fun getActivists(): ArrayList<Student> {
-        val studentsActivists: ArrayList<Student> = ArrayList()
-        for (student: Student in students) {
-            if (student.events > 0) {
-                studentsActivists.add(student)
-            }
-        }
-        return studentsActivists
+    fun getActivists(): List<Student> {
+        return students.filter {student -> student.events > 0}
     }
 
-    fun getStudentsWinners(): ArrayList<Student> {
-        val studentsWinners: ArrayList<Student> = ArrayList()
-        for (student: Student in students) {
-            if ((student.prizePlace == 1 or 2 or 3) or (student.projectNames?.isNotEmpty() != true)) {
-                studentsWinners.add(student)
-            }
-        }
-        return studentsWinners
+    fun getStudentsWinners(): List<Student> {
+        return students.filter {student -> (student.prizePlace == 1 or 2 or 3) or (student.projectNames?.isNotEmpty() != true)}
     }
 
 
-    private fun getBudgetStudentsNumber(): Int {
-        var count = 0
-        for (student: Student in students) {
-            if (student !is ContractStudent) {
-                count++
-            }
-            return count
-        }
+    fun getBudgetStudentsNumber(): Int {
+        return students.filter {student -> student !is ContractStudent}.size
     }
 
-    private fun getContractStudentsNumber(): Int {
-        var count = 0
-        for (student: Student in students) {
-            if (student is ContractStudent) {
-                count++
-            }
-            return count
-        }
+    fun getContractStudentsNumber(): Int {
+        return students.filter {student -> student is ContractStudent}.size
     }
 }
